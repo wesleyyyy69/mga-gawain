@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tokyo Ghoul Manga Website</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #b30000; /* red theme */
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      font-size: 1.2em;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .cover {
+      width: 250px;
+      border-radius: 8px;
+      border: 3px solid white;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    #chapterViewer img {
+      max-width: 90%;
+      border: 2px solid white;
+      border-radius: 8px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .buttons {
+      margin: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background: white;
+      color: black;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: gray;
+      color: white;
+    }
+
+    .page-info {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Tokyo Ghoul</h1>
+    <p>Manga Reader — Chapters 61–63</p>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <!-- Cover -->
+    <img src="https://upload.wikimedia.org/wikipedia/en/e/e5/Tokyo_Ghoul_volume_1_cover.jpg" alt="Tokyo Ghoul Cover" class="cover">
+
+    <!-- Description -->
+    <div class="description">
+      <p><strong>Description</strong>  
+      Tokyo Ghoul is the story of Ken Kaneki, a bibliophile college student who finds himself lucky enough to score a date with a hot girl. Unfortunately, that girl turns out to be a flesh-eating monster, and the date ends with her harvesting him for his meat. As a wimpy teen trapped in an alley with a deadly predator, Kaneki is categorically screwed, only managing to survive when a freak construction accident knocks out both of them. The girl dies, and a mysterious doctor ends up transplanting her organs into Kaneki to save his life. Recovery proceeds as normal for a while, until Kaneki realizes that regular food has begun to disgust him, and he's strangely tantalized by the scent of human flesh instead.</p>
+    </div>
+
+    <!-- Manga Viewer -->
+    <div id="chapterViewer"></div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button onclick="prevPage()">⟨ Prev</button>
+      <button onclick="nextPage()">Next ⟩</button>
+    </div>
+
+    <div class="page-info" id="pageInfo"></div>
+  </div>
+
+  <!-- SCRIPT -->
+<script>
+const chapters = {
+  61: Array.from({ length: 18 }, (_, i) => `images/ch61_${i+1}.jpg`),
+  62: Array.from({ length: 12 }, (_, i) => `images/ch62_${i+1}.jpg`),
+  63: Array.from({ length: 12 }, (_, i) => `images/ch63_${i+1}.jpg`)
+};
+
+let currentChapter = 61;
+let currentPage = 0;
+
+function showPage() {
+  const viewer = document.getElementById("chapterViewer");
+  const pageInfo = document.getElementById("pageInfo");
+
+  viewer.innerHTML = `
+    <h2>Chapter ${currentChapter}</h2>
+    <img src="${chapters[currentChapter][currentPage]}" 
+         alt="Chapter ${currentChapter} Page ${currentPage+1}"
+         onerror="this.alt='⚠️ Image not found'; this.style.border='2px solid red';">
+  `;
+  pageInfo.textContent = `Page ${currentPage+1} of ${chapters[currentChapter].length}`;
+}
+
+function nextPage() {
+  if (currentPage < chapters[currentChapter].length - 1) {
+    currentPage++;
+  } else if (currentChapter < 63) {
+    currentChapter++;
+    currentPage = 0;
+  }
+  showPage();
+}
+
+function prevPage() {
+  if (currentPage > 0) {
+    currentPage--;
+  } else if (currentChapter > 61) {
+    currentChapter--;
+    currentPage = chapters[currentChapter].length - 1;
+  }
+  showPage();
+}
+
+window.onload = showPage;
+</script>
