@@ -7,8 +7,6 @@ menu.onclick = () => {
     navbar.classList.toggle('active');
 };
 
-// Assuming you have a search icon element with class 'search-icon'
-// If the search form is always visible, you might not need this.
 if (searchIcon) {
     searchIcon.onclick = () => {
         searchForm.classList.toggle('active');

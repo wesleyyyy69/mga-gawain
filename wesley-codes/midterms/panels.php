@@ -20,7 +20,8 @@ $manga = $manga_list[$manga_id];
 
 function getMangaPages($manga_id, $chapter_id) {
     $pages = [];
-  
+    // Placeholder for actual manga pages. You would replace these with real image URLs for each chapter.
+    // For demonstration, I'm using a generic placeholder.
     $base_url = "https://via.placeholder.com/600x800?text=";
 
     if ($manga_id == 1) { // Tokyo Ghoul
@@ -52,22 +53,28 @@ $pages = getMangaPages($manga_id, $chapter);
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= $manga['title'] ?> - Chapter <?= $chapter ?></title>
 <link rel="stylesheet" href="styles.css">
-<style>
-body { background: #1a1a1a; color: #e0e0e0; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; } /* Darker background and lighter text */
-a.back { display: inline-block; margin: 20px; padding: 10px 15px; background: #333333; color: white; border-radius: 6px; text-decoration: none; } /* Darker back button */
-a.back:hover { background: #555555; } /* Lighter dark on hover */
-.reader-container { max-width: 600px; margin: auto; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-.reader-container img { max-width: 100%; height: auto; border-radius: 8px; }
-.controls { display: flex; justify-content: space-between; width: 100%; margin: 10px 0; }
-button, select { padding: 10px 20px; font-size: 1.4rem; border-radius: 5px; border: none; cursor: pointer; background: #bb0000; color: white; } /* Darker red for buttons and select */
-button:hover, select:hover { background: #880000; } /* Even darker red on hover */
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 
-<a href="index.php" class="back">⬅ Back to Menu</a>
+<header>
+    <a href="index.php" class="logo">Manga Reader</a>
+    <nav class="navbar">
+        <a href="index.php?genre=all">Home</a>
+        <a href="index.php?genre=fantasy">Fantasy</a>
+        <a href="index.php?genre=dark fantasy">Dark Fantasy</a>
+        <a href="index.php?genre=comedy">Comedy</a>
+    </nav>
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+    </div>
+</header>
+
+<section class="home">
+<a href="manga.php?manga=<?= $manga_id ?>" class="back">⬅ Back to <?= $manga['title'] ?></a>
 <h1><?= $manga['title'] ?> - Chapter <?= $chapter ?></h1>
 
 <div class="reader-container">
@@ -78,23 +85,25 @@ button:hover, select:hover { background: #880000; } /* Even darker red on hover 
 
 <div class="controls">
     <?php if ($chapter > 1): ?>
-        <a href="panel.php?manga=<?= $manga_id ?>&chapter=<?= $chapter-1 ?>"><button>Prev Chapter</button></a>
+        <a href="panels.php?manga=<?= $manga_id ?>&chapter=<?= $chapter-1 ?>"><button>Prev Chapter</button></a>
     <?php else: ?>
         <button disabled>Prev Chapter</button>
     <?php endif; ?>
 
     <select onchange="location = this.value;">
         <?php for($i=1; $i <= $manga['chapters']; $i++): ?>
-            <option value="panel.php?manga=<?= $manga_id ?>&chapter=<?= $i ?>" <?= $i==$chapter?'selected':'' ?>>Chapter <?= $i ?></option>
+            <option value="panels.php?manga=<?= $manga_id ?>&chapter=<?= $i ?>" <?= $i==$chapter?'selected':'' ?>>Chapter <?= $i ?></option>
         <?php endfor; ?>
     </select>
 
     <?php if ($chapter < $manga['chapters']): ?>
-        <a href="panel.php?manga=<?= $manga_id ?>&chapter=<?= $chapter+1 ?>"><button>Next Chapter</button></a>
+        <a href="panels.php?manga=<?= $manga_id ?>&chapter=<?= $chapter+1 ?>"><button>Next Chapter</button></a>
     <?php else: ?>
         <button disabled>Next Chapter</button>
     <?php endif; ?>
 </div>
 
+</section>
+<script src="main.js"></script>
 </body>
 </html>
