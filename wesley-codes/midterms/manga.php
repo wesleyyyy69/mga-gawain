@@ -10,37 +10,37 @@ $manga_list = [
     2 => [
         "title" => "Konosuba: God's Blessing on This Wonderful World!",
         "genre" => "comedy",
-        "cover" => "https://books.google.com.ph/books/publisher/content?id=zE8ODQAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U0gpf3EFrLGHBX8J7rQOR_XFL5IQQ&w=1280.jpeg",
+        "cover" => "https://temp.compsci88.com/cover/normal/01J76XYAQ48RHVHTHZ7XBBAA4Z.webp",
         "description" => "A high school student dies and is reincarnated in a fantasy world, forming a dysfunctional party with a goddess, a mage, and a crusader.",
-        "chapters" => 5
+        "chapters" => 3
     ],
     3 => [
         "title" => "Jujutsu Kaisen",
         "genre" => "dark fantasy",
-        "cover" => "https://preview.redd.it/volume-26-cover-hd-from-v0-ylkuv80xkmnc1.jpeg?width=640&crop=smart&auto=webp&s=942812ee626571ed8135250932ec9621e414c9b7.jpeg",
+        "cover" => "https://static.beebom.com/wp-content/uploads/2024/11/Gojo.jpg?quality=75&strip=all.jpeg",
         "description" => "A high school student swallows a cursed object and becomes involved in the world of Jujutsu Sorcerers.",
-        "chapters" => 5
+        "chapters" => 3
     ],
     4 => [
         "title" => "Demon Slayer: Kimetsu no Yaiba",
         "genre" => "dark fantasy",
-        "cover" => "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Demon_Slayer_-_Kimetsu_no_Yaiba_-_Vol._1.jpeg/220px-Demon_Slayer_-_Kimetsu_no_Yaiba_-_Vol._1.jpeg",
+        "cover" => "https://cdn.kobo.com/book-images/086b65fc-4a24-4400-9b81-d828313958bf/353/569/90/False/demon-slayer-kimetsu-no-yaiba-vol-1.jpg",
         "description" => "A young boy seeks to avenge his family and cure his sister, who was turned into a demon.",
-        "chapters" => 5
+        "chapters" => 3
     ],
     5 => [
         "title" => "Solo Leveling",
         "genre" => "fantasy",
-        "cover" => "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Solo_Leveling_webnovel_cover.jpg/220px-Solo_Leveling_webnovel_cover.jpg",
+        "cover" => "https://cdn.kobo.com/book-images/13b9c607-87d8-45df-90dc-841025f8999e/353/569/90/False/solo-leveling-vol-1-comic.jpg",
         "description" => "In a world where hunters, humans with magical abilities, must battle deadly monsters, a weak hunter gains a unique power.",
-        "chapters" => 5
+        "chapters" => 3
     ],
     6 => [
         "title" => "Tokyo Revengers",
         "genre" => "fantasy",
-        "cover" => "",
+        "cover" => "https://upload.wikimedia.org/wikipedia/en/b/b1/Tokyo_Revengers_volume_1_cover.jpg",
         "description" => "The story follows Takemichi's journey as he tries to rewrite destiny and save his loved ones from tragic fates.",
-        "chapters" => 5
+        "chapters" => 3
     ]
 ]; 
 $manga_id = isset($_GET['manga']) ? (int)$_GET['manga'] : 0;
